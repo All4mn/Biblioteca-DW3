@@ -98,6 +98,14 @@ export class NotFound extends AppError{
 
 //tenha a liberdade de escrever novos erros para esta aplicação, ex: Erro de validação, erro pra submitar, etc
 EOL
+
+cat <<EOL > ${tarefa}.http
+@url = http://localhost:3000
+
+###
+GET {{url}}/${tarefa}
+
+EOL
 echo "terminando umas coisinhas"
 sleep 1s
 
