@@ -1,7 +1,11 @@
 import fastify from 'fastify'
 import cors from '@fastify/cors'
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUi from '@fastify/swagger-ui'
+
 import TarefaRoutes from './features/tarefas/tarefas.routes.js'
 import UsuariosRoutes from './features/usuarios/usuarios.routes.js'
+import PessoasRoutes from './features/pessoas/pessoas.routes.js'
 import { AppError } from './errors/AppError.js'
 
 const app = fastify({
@@ -9,6 +13,29 @@ const app = fastify({
 })
 
 app.register(cors)
+
+app.register(fastifySwagger, {
+  openapi: {
+    info: {
+      title: 'API Biblioteca',
+      description: 'API para gerenciamento de tarefas',
+      version: '1.0.0'
+    },
+    servers: [
+      {
+        url: 'http://localhost:3000',
+        description: 'Servidor local'
+      }
+    ]
+  }
+})
+
+app.register(fastifySwaggerUi, {
+  routePrefix: '/docs',
+  swagger: {
+    url: '/docs/json'
+  }
+})
 
 app.setErrorHandler((error, request, reply) => {
   if (error instanceof AppError) {
@@ -29,9 +56,11 @@ app.setErrorHandler((error, request, reply) => {
 app.register(TarefaRoutes)
 
 app.register(UsuariosRoutes, {prefix: '/usuarios'})
+app.register(PessoasRoutes, {prefix: '/pessoas'})
 
 const start = async () => {
     try {
+      await app.ready()
         await app.listen({ port: 3000 })
     } catch (err) {
         app.log.error(err)
