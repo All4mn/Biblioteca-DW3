@@ -6,4 +6,11 @@ export class NotFound extends AppError{
     }
 }
 
+
+export class RequiredField extends AppError {
+    constructor(message="Campo obrigatório") {
+        super(message,401)
+    }
+}
+
 //tenha a liberdade de escrever novos erros para esta aplicação, ex: Erro de validação, erro pra submitar, etc
