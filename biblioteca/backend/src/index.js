@@ -1,6 +1,7 @@
 import fastify from 'fastify'
 import cors from '@fastify/cors'
 import TarefaRoutes from './features/tarefas/tarefas.routes.js'
+import UsuariosRoutes from './features/usuarios/usuarios.routes.js'
 import { AppError } from './errors/AppError.js'
 
 const app = fastify({
@@ -26,6 +27,8 @@ app.setErrorHandler((error, request, reply) => {
 })
 
 app.register(TarefaRoutes)
+
+app.register(UsuariosRoutes, {prefix: '/usuarios'})
 
 const start = async () => {
     try {
