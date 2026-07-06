@@ -28,15 +28,30 @@ class Service {
     if (!nacionalidade) erros.push("Nacionalidade não especificada");
     if (erros.length > 0) throw new RequiredField(erros);
     try {
-        const response = await this.repository.create(nome, nacionalidade);
+      const response = await this.repository.create(nome, nacionalidade);
+      return response;
+    } catch (error) {
+      if (error.code === "23505") {
+        throw new AppError("Conflito de inserção: Nomes duplicados");
+      }
+      throw new AppError("Incapaz de cadastrar novo autor");
+    }
+  }
+
+  async update(id, nome, nacionalidade) {
+    if(!id || isNaN(id)) throw new RequiredField("Id não especificado ou inválido")
+    if(!nome && !nacionalidade) throw new RequiredField("Ambos os campos não especificados")
+    
+    try {
+        const response = await this.repository.update(id, nome, nacionalidade);
         return response;
         
     } catch (error) {
-        if(error.code === '23505'){            
-            throw new AppError("Conflito de inserção: Nomes duplicados")
-        }
-        throw new AppError("Incapaz de cadastrar novo autor")
-    }
+        if(!error.code === "23505"){
+            throw new AppError("Conflito de atualização: Nomes Duplicados")
+        }    
+        throw new AppError("Incapaz de atualizar");    
+    }    
   }
 }
 

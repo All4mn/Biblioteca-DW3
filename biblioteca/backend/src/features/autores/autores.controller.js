@@ -1,25 +1,31 @@
 class Controller {
-    constructor(service) {
-        this.service = service
-    }
+  constructor(service) {
+    this.service = service;
+  }
 
-    async listar(req, res) {
-        // Deixamos o erro subir para o Error Handler Global resolver de forma limpa
-        const response = await this.service.listar()
-        return res.send({ status: 'OK', data: response })
-    }
-    async findById(req, res){
-        const {id} = req.params
-        const response = await this.service.findById(id);
-        return response;
-    }
+  async listar(req, res) {
+    // Deixamos o erro subir para o Error Handler Global resolver de forma limpa
+    const response = await this.service.listar();
+    return res.send({ status: "OK", data: response });
+  }
+  async findById(req, res) {
+    const { id } = req.params;
+    const response = await this.service.findById(id);
+    return response;
+  }
 
-    async create(req, res){
-        const {nome, nacionalidade} = req.body 
-        const response = await this.service.create(nome, nacionalidade);
-        return response;
-    }
+  async create(req, res) {
+    const { nome, nacionalidade } = req.body;
+    const response = await this.service.create(nome, nacionalidade);
+    return response;
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+    const { nome, nacionalidade } = req.body;
+    const response = await this.service.update(id, nome, nacionalidade);
+    return response;
+  }
 }
 
-export default Controller
-
+export default Controller;

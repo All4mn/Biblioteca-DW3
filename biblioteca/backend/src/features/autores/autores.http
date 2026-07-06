@@ -4,7 +4,7 @@
 GET {{url}}/autores/
 
 ###
-GET {{url}}/autores/3
+GET {{url}}/autores/6
 
 ###
 POST {{url}}/autores
@@ -13,5 +13,14 @@ Content-Type: application/json
 {
     "nome":"Coelho Neto",
     "nacionalidade":"Brasil"
+}
+
+###
+PUT {{url}}/autores/6
+Content-Type: application/json
+
+{
+    "nome":"Clarice Lispector",
+    "nacionalidade":"Ucrâniana"
 }
 
