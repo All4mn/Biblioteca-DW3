@@ -3,3 +3,6 @@
 ###
 GET {{url}}/livros_autores
 
+###
+GET {{url}}/livros_autores/livro/1
+

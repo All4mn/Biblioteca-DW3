@@ -8,6 +8,16 @@ class Controller {
         const response = await this.service.listar()
         return res.send({ status: 'OK', data: response })
     }
+    async findByIdLivro(req, res){
+        const {id} = req.params
+        const response = await this.service.findByIdLivro(id);
+    return response;
+    }
+    async findByIdAutor(req, res){
+        const {id} = req.params
+        const response = await this.service.findByIdAutor(id);
+    return response;
+    }
 }
 
 export default Controller

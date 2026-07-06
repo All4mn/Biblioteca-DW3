@@ -10,4 +10,12 @@ export default async function Livros_autoresRoutes(app) {
     app.get('/', async (req, res) => {
         return controller.listar(req, res)
     })
+    app.get('/livro/:id', async (req,res)=>{
+    return controller.findByIdLivro(req,res)
+    })
+    
+    app.get('/autor/:id', async (req,res)=>{
+    return controller.findByIdAutor(req,res)
+    })
+
 }
