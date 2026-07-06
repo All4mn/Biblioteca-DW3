@@ -7,6 +7,8 @@ import TarefaRoutes from './features/tarefas/tarefas.routes.js'
 import UsuariosRoutes from './features/usuarios/usuarios.routes.js'
 import PessoasRoutes from './features/pessoas/pessoas.routes.js'
 import { AppError } from './errors/AppError.js'
+import { swaggerOptions, swaggerUIoptions } from './swagger/swagger.js'
+
 
 const app = fastify({
     logger: true
@@ -14,28 +16,10 @@ const app = fastify({
 
 app.register(cors)
 
-app.register(fastifySwagger, {
-  openapi: {
-    info: {
-      title: 'API Biblioteca',
-      description: 'API para gerenciamento de tarefas',
-      version: '1.0.0'
-    },
-    servers: [
-      {
-        url: 'http://localhost:3000',
-        description: 'Servidor local'
-      }
-    ]
-  }
-})
+app.register(fastifySwagger, swaggerOptions)
 
-app.register(fastifySwaggerUi, {
-  routePrefix: '/docs',
-  swagger: {
-    url: '/docs/json'
-  }
-})
+app.register(fastifySwaggerUi, swaggerUIoptions)
+
 
 app.setErrorHandler((error, request, reply) => {
   if (error instanceof AppError) {
