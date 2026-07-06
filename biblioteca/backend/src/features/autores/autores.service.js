@@ -1,4 +1,4 @@
-import { NotFound, RequiredField } from './pessoas.error.js'
+import { NotFound } from './autores.error.js'
 
 class Service {
     constructor(repository) {
@@ -10,17 +10,6 @@ class Service {
         if (!response || response.length === 0) {
             // Boa prática: usando o AppError customizado que você criou!
             throw new NotFound()
-        }
-        return response
-    }
-
-    async findById(id) {
-        if(!id || isNaN(id)){
-            throw new RequiredField('ID é obrigatório e deve ser um número')
-        }
-        const response = await this.repository.findById(id)
-        if (!response) {
-            throw new NotFound("Pessoa não encontrada")
         }
         return response
     }

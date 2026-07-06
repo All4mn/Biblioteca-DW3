@@ -1,6 +1,6 @@
-import { NotFound } from './tarefas.error.js'
+import { NotFound } from './funcionarios.error.js'
 
-class TarefaService {
+class Service {
     constructor(repository) {
         this.repository = repository
     }
@@ -15,4 +15,4 @@ class TarefaService {
     }
 }
 
-export default TarefaService
+export default Service

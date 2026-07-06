@@ -10,4 +10,8 @@ export default async function PessoasRoutes(app) {
     app.get('/', async (req, res) => {
         return controller.listar(req, res)
     })
+
+    app.get('/:id', async (req,res)=>{
+        return controller.findById(req,res)
+    })
 }

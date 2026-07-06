@@ -8,6 +8,7 @@ export default async function UsuariosRoutes(app) {
     const controller = new Controller(service)
     
     app.get('/usuarios', async (req, res) => {
+        
         return controller.listar(req, res)
     })
 }

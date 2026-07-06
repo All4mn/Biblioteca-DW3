@@ -1,4 +1,4 @@
-class TarefaController {
+class Controller {
     constructor(service) {
         this.service = service
     }
@@ -10,4 +10,5 @@ class TarefaController {
     }
 }
 
-export default TarefaController
+export default Controller
+

@@ -3,3 +3,6 @@
 
 ###
 GET {{url}}/pessoas
+
+###
+GET {{url}}/pessoas/1
