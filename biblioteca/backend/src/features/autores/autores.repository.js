@@ -11,6 +11,13 @@ class Repository {
   `,[id]);
   return response.rows
   }
+  async create(nome,nacionalidade){
+  const response = await database.query(`
+  INSERT INTO autores (nome, nacionalidade) VALUES ($1, $2)
+  RETURNING * 
+  `,[nome,nacionalidade]);
+  return response.rows
+  }
 }
 
 export default Repository

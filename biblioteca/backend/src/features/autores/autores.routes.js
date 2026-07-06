@@ -13,4 +13,7 @@ export default async function AutoresRoutes(app) {
     app.get('/:id', async (req,res)=>{
     return controller.findById(req,res)
     })
+    app.post('/', async (req,res)=>{
+    return controller.create(req,res)
+    })
 }

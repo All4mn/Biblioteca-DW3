@@ -6,3 +6,12 @@ GET {{url}}/autores/
 ###
 GET {{url}}/autores/3
 
+###
+POST {{url}}/autores
+Content-Type: application/json
+
+{
+    "nome":"Coelho Neto",
+    "nacionalidade":"Brasil"
+}
+

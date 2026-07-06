@@ -13,6 +13,12 @@ class Controller {
         const response = await this.service.findById(id);
         return response;
     }
+
+    async create(req, res){
+        const {nome, nacionalidade} = req.body 
+        const response = await this.service.create(nome, nacionalidade);
+        return response;
+    }
 }
 
 export default Controller
