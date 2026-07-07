@@ -3,3 +3,24 @@
 ###
 GET {{url}}/categorias_generos
 
+###
+GET {{url}}/categorias_generos/1
+
+###
+POST {{url}}/categorias_generos
+Content-Type: application/json
+
+{
+    "nome": "Terror",
+    "descricao": "Obras que provocam medo"
+}
+
+###
+PUT {{url}}/categorias_generos/6
+Content-Type: application/json
+
+{
+    "nome": "Terror",
+    "descricao": "Obras que provocam medo, suspense e terror"
+}
+
