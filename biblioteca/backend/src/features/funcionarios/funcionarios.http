@@ -1,5 +1,57 @@
 @url = http://localhost:3000
 
+### ===== SUCESSO =====
+
 ###
 GET {{url}}/funcionarios
+
+###
+GET {{url}}/funcionarios/1
+
+###
+POST {{url}}/funcionarios
+Content-Type: application/json
+
+{
+    "pessoa_id": 1,
+    "cargo": "Bibliotecário",
+    "data_contratacao": "2024-01-15"
+}
+
+###
+PUT {{url}}/funcionarios/1
+Content-Type: application/json
+
+{
+    "cargo": "Bibliotecário Sênior"
+}
+
+### ===== ERRO =====
+
+###
+GET {{url}}/funcionarios/9999
+
+###
+POST {{url}}/funcionarios
+Content-Type: application/json
+
+{
+    "cargo": "Bibliotecário"
+}
+
+###
+POST {{url}}/funcionarios
+Content-Type: application/json
+
+{
+    "pessoa_id": 9999,
+    "cargo": "Bibliotecário",
+    "data_contratacao": "2024-01-15"
+}
+
+###
+PUT {{url}}/funcionarios/1
+Content-Type: application/json
+
+{}
 
