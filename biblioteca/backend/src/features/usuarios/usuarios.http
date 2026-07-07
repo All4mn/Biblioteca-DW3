@@ -1,0 +1,19 @@
+@url = http://localhost:3000/usuarios
+
+
+###
+GET {{url}}
+
+###
+GET {{url}}/11
+
+###
+POST {{url}}
+Content-Type: application/json
+
+{
+    "pessoa_id":"1"
+}
+
+###
+GET {{url}}/pessoa/11
