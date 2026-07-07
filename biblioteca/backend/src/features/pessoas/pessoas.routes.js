@@ -7,11 +7,8 @@ export default async function PessoasRoutes(app) {
     const service = new Service(repository)
     const controller = new Controller(service)
     
-    app.get('/', async (req, res) => {
-        return controller.listar(req, res)
-    })
-
-    app.get('/:id', async (req,res)=>{
-        return controller.findById(req,res)
-    })
+    app.get('/', async (req, res) => controller.listar(req, res))
+    app.get('/:id', async (req, res) => controller.findById(req, res))
+    app.post('/', async (req, res) => controller.create(req, res))
+    app.put('/:id', async (req, res) => controller.update(req, res))
 }

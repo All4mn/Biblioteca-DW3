@@ -1,0 +1,29 @@
+@url = http://localhost:3000
+
+###
+GET {{url}}/pessoas
+
+###
+GET {{url}}/pessoas/1
+
+###
+POST {{url}}/pessoas
+Content-Type: application/json
+
+{
+    "nome": "João Silva Junior",
+    "email": "joao123@email.com",
+    "telefone": "(11) 99999-8888",
+    "data_nascimento": "2010-05-15",
+    "cpf": "123.456.789-01"
+}
+
+###
+PUT {{url}}/pessoas/9
+Content-Type: application/json
+
+{
+    "nome": "João Silva Atualizado",
+    "telefone": "(11) 97777-6666",
+    "data_nascimento": "1991-08-20"
+}
