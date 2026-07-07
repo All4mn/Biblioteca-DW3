@@ -1,5 +1,60 @@
 @url = http://localhost:3000
 
+### ===== SUCESSO =====
+
 ###
 GET {{url}}/livros
+
+###
+GET {{url}}/livros/1
+
+###
+POST {{url}}/livros
+Content-Type: application/json
+
+{
+    "titulo": "Dom Casmurro",
+    "isbn": "9788537800000",
+    "ano_publicacao": 1899,
+    "editora": "Livraria Garnier",
+    "categoria_id": 1
+}
+
+###
+PUT {{url}}/livros/1
+Content-Type: application/json
+
+{
+    "editora": "Editora Nova Fronteira"
+}
+
+### ===== ERRO =====
+
+###
+GET {{url}}/livros/9999
+
+###
+POST {{url}}/livros
+Content-Type: application/json
+
+{
+    "isbn": "9788537800000",
+    "categoria_id": 1
+}
+
+###
+POST {{url}}/livros
+Content-Type: application/json
+
+{
+    "titulo": "Livro Inválido",
+    "isbn": "0000000000000",
+    "categoria_id": 9999
+}
+
+###
+PUT {{url}}/livros/1
+Content-Type: application/json
+
+{}
 

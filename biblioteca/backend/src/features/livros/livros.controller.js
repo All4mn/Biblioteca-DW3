@@ -4,9 +4,27 @@ class Controller {
     }
 
     async listar(req, res) {
-        // Deixamos o erro subir para o Error Handler Global resolver de forma limpa
         const response = await this.service.listar()
         return res.send({ status: 'OK', data: response })
+    }
+
+    async findById(req, res) {
+        const { id } = req.params
+        const response = await this.service.findById(id)
+        return response
+    }
+
+    async create(req, res) {
+        const { titulo, isbn, ano_publicacao, editora, categoria_id } = req.body
+        const response = await this.service.create(titulo, isbn, ano_publicacao, editora, categoria_id)
+        return response
+    }
+
+    async update(req, res) {
+        const { id } = req.params
+        const { titulo, isbn, ano_publicacao, editora, categoria_id } = req.body
+        const response = await this.service.update(id, titulo, isbn, ano_publicacao, editora, categoria_id)
+        return response
     }
 }
 
