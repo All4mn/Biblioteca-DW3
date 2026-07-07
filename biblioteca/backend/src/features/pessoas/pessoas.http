@@ -1,5 +1,7 @@
 @url = http://localhost:3000
 
+### ===== SUCESSO =====
+
 ###
 GET {{url}}/pessoas
 
@@ -27,3 +29,30 @@ Content-Type: application/json
     "telefone": "(11) 97777-6666",
     "data_nascimento": "1991-08-20"
 }
+
+### ===== ERRO =====
+
+###
+GET {{url}}/pessoas/9999
+
+###
+POST {{url}}/pessoas
+Content-Type: application/json
+
+{
+    "telefone": "(11) 99999-8888"
+}
+
+###
+PUT {{url}}/pessoas/9999
+Content-Type: application/json
+
+{
+    "nome": "Pessoa Inexistente"
+}
+
+###
+PUT {{url}}/pessoas/9
+Content-Type: application/json
+
+{}

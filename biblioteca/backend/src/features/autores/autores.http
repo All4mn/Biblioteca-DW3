@@ -1,5 +1,7 @@
 @url = http://localhost:3000
 
+### ===== SUCESSO =====
+
 ###
 GET {{url}}/autores/
 
@@ -23,4 +25,31 @@ Content-Type: application/json
     "nome":"Clarice Lispector",
     "nacionalidade":"Ucrâniana"
 }
+
+### ===== ERRO =====
+
+###
+GET {{url}}/autores/9999
+
+###
+POST {{url}}/autores
+Content-Type: application/json
+
+{
+    "nacionalidade":"Brasil"
+}
+
+###
+PUT {{url}}/autores/9999
+Content-Type: application/json
+
+{
+    "nome":"Machado de Assis"
+}
+
+###
+PUT {{url}}/autores/6
+Content-Type: application/json
+
+{}
 

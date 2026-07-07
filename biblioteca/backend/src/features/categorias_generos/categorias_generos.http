@@ -1,5 +1,7 @@
 @url = http://localhost:3000
 
+### ===== SUCESSO =====
+
 ###
 GET {{url}}/categorias_generos
 
@@ -23,4 +25,31 @@ Content-Type: application/json
     "nome": "Terror",
     "descricao": "Obras que provocam medo, suspense e terror"
 }
+
+### ===== ERRO =====
+
+###
+GET {{url}}/categorias_generos/9999
+
+###
+POST {{url}}/categorias_generos
+Content-Type: application/json
+
+{
+    "descricao": "Sem nome definido"
+}
+
+###
+PUT {{url}}/categorias_generos/9999
+Content-Type: application/json
+
+{
+    "nome": "Teste"
+}
+
+###
+PUT {{url}}/categorias_generos/6
+Content-Type: application/json
+
+{}
 
