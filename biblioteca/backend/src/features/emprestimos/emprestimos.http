@@ -1,19 +1,52 @@
-@url = http://localhost:3000/emprestimos
+@url = http://localhost:3000
+
+### ===== SUCESSO =====
 
 ###
-GET {{url}}/
+GET {{url}}/emprestimos
 
 ###
-GET {{url}}/1
+GET {{url}}/emprestimos/1
 
 ###
-POST {{url}}/
+POST {{url}}/emprestimos
 Content-Type: application/json
 
 {
-    "usuario_id":"1",
-    "livro_id":"2",
-    "funcionario_id":"3"
-
+    "usuario_id": 1,
+    "livro_id": 5,
+    "funcionario_id": 2
 }
 
+###
+PUT {{url}}/emprestimos/2/devolver
+
+### ===== ERRO =====
+
+###
+GET {{url}}/emprestimos/9999
+
+###
+POST {{url}}/emprestimos
+Content-Type: application/json
+
+{
+    "usuario_id": 9999,
+    "livro_id": 2,
+    "funcionario_id": 3
+}
+
+###
+POST {{url}}/emprestimos
+Content-Type: application/json
+
+{
+    "livro_id": 2,
+    "funcionario_id": 3
+}
+
+###
+PUT {{url}}/emprestimos/9999/devolver
+
+###
+PUT {{url}}/emprestimos/1/devolver

@@ -10,3 +10,12 @@ GET {{url}}/livros_autores/livro/1
 ###
 GET {{url}}/livros_autores/autor/1
 
+###
+POST {{url}}/livros_autores
+Content-Type: application/json
+
+{
+    "livro_id":"1",
+    "autor_id":"4"
+}
+

@@ -30,6 +30,14 @@ class Service {
     }
     return response;
     }
+
+    async create(livro_id, autor_id){
+        if(!livro_id || !autor_id) throw new RequiredField()
+            const repetido = await this.repository.findByIdLivro(livro_id)
+        if(repetido.autor_id === autor_id) throw new RequiredField("Livro ja cadastrado")
+    const response = await this.repository.create(livro_id, autor_id);
+    return response;
+    }
 }
 
 export default Service
