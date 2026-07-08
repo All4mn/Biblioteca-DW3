@@ -18,6 +18,12 @@ class Controller {
         const response = await this.service.findByIdAutor(id);
     return response;
     }
+
+    async create(req, res){
+        const { livro_id, autor_id } = req.body
+    const response = await this.service.create(livro_id,autor_id);
+    return response;
+    }
 }
 
 export default Controller
