@@ -5,7 +5,7 @@
 GET {{url}}
 
 ###
-GET {{url}}/11
+GET {{url}}/1
 
 ###
 POST {{url}}
@@ -17,3 +17,9 @@ Content-Type: application/json
 
 ###
 GET {{url}}/pessoa/11
+
+###
+GET {{url}}/emprestimos/2
+###
+
+

@@ -22,14 +22,20 @@ class Controller {
   }
 
   async delete(req, res) {
-    const { usuario_id } = req.params;
-    const response = await this.service.delete(req, res);
+    const { id } = req.params;
+    const response = await this.service.delete(id);
     return response;
   }
 
   async findByPessoaIdInUsuario(req, res) {
     const { id } = req.params;
     const response = await this.service.findByPessoaIdInUsuario(id);
+    return response;
+  }
+
+  async listAllEmprestimos(req, res) {
+    const { id } = req.params;
+    const response = await this.service.listAllEmprestimos(id);
     return response;
   }
 }

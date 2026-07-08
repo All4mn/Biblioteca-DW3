@@ -19,11 +19,15 @@ export default async function UsuariosRoutes(app) {
     return controller.create(req,res)
     })
 
-    app.delete('/:id', async (req,res)=>{
+    app.put('/:id', async (req,res)=>{
     return controller.delete(req,res)
     })
 
     app.get('/pessoa/:id', async (req,res)=>{
     return controller.findByPessoaIdInUsuario(req,res)
+    })
+
+    app.get('/emprestimos/:id', async (req,res)=>{
+    return controller.listAllEmprestimos(req,res)
     })
 }
