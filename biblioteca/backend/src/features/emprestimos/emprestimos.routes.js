@@ -50,4 +50,17 @@ export default async function EmprestimosRoutes(app) {
     },
     handler: async (req, res) => controller.emprestarLivro(req, res)
   });
+
+  app.patch('/:id/devolver', {
+    schema: {
+      tags: ['Emprestimos'],
+      summary: 'Devolver empréstimo',
+      description: 'Registra a devolução de um livro emprestado, atualizando o status do empréstimo e a data de devolução real.',
+      params: emprestimoIdParamSchema,
+      response: {
+        200: emprestimoResponseSchema
+      }
+    },
+    handler: async (req, res) => controller.devolver(req, res)
+  });
 }
