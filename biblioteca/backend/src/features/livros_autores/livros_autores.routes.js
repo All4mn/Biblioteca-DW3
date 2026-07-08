@@ -18,4 +18,8 @@ export default async function Livros_autoresRoutes(app) {
     return controller.findByIdAutor(req,res)
     })
 
+    app.post('/', async (req,res)=>{
+    return controller.create(req,res)
+    })
+
 }

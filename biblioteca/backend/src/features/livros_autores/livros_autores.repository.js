@@ -17,5 +17,13 @@ select a.nome as autor, la.autor_id ,la.livro_id, l.titulo, cg.nome as genero, l
 `,[id]);
 return response.rows
 }
+
+async create(livro_id, autor_id){
+const response = await database.query(`
+INSERT INTO livros_autores (livro_id, autor_id) VALUES ($1, $2)
+returning *
+`,[livro_id, autor_id]);
+return response.rows
+}
 }
 export default Repository;
