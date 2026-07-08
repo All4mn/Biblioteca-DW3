@@ -6,16 +6,9 @@ export default async function EmprestimosRoutes(app) {
     const repository = new Repository()
     const service = new Service(repository)
     const controller = new Controller(service)
-    
-    app.get('/', async (req, res) => {
-        return controller.listar(req, res)
-    })
 
-    app.get('/:id', async (req,res)=>{
-    return controller.findById(req,res)
-    })
-
-    app.post('/', async (req,res)=>{
-    return controller.emprestarLivro(req,res)
-    })
+    app.get('/', async (req, res) => controller.listar(req, res))
+    app.get('/:id', async (req, res) => controller.findById(req, res))
+    app.post('/', async (req, res) => controller.emprestarLivro(req, res))
+    app.put('/:id/devolver', async (req, res) => controller.devolver(req, res))
 }
