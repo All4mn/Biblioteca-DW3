@@ -1,5 +1,19 @@
-@url = http://localhost:3000
+@url = http://localhost:3000/emprestimos
 
 ###
-GET {{url}}/emprestimos
+GET {{url}}/
+
+###
+GET {{url}}/1
+
+###
+POST {{url}}/
+Content-Type: application/json
+
+{
+    "usuario_id":"1",
+    "livro_id":"2",
+    "funcionario_id":"3"
+
+}
 
