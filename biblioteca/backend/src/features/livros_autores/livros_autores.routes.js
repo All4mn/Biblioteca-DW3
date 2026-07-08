@@ -2,10 +2,12 @@ import Controller from './livros_autores.controller.js';
 import Repository from './livros_autores.repository.js';
 import Service from './livros_autores.service.js';
 import {
+  livroAutorResponseSchema,
   livrosAutoresListResponseSchema,
   livrosAutoresByLivroResponseSchema,
   livrosAutoresByAutorResponseSchema,
-  livroAutorIdParamSchema
+  livroAutorIdParamSchema,
+  criarLivroAutorBodySchema
 } from '../../schemas/livros_autores.schema.js';
 
 export default async function Livros_autoresRoutes(app) {
@@ -49,5 +51,18 @@ export default async function Livros_autoresRoutes(app) {
       }
     },
     handler: async (req, res) => controller.findByIdAutor(req, res)
+  });
+
+  app.post('/', {
+    schema: {
+      tags: ['LivrosAutores'],
+      summary: 'Criar relacionamento livro-autor',
+      description: 'Associa um autor a um livro criando um novo registro de relacionamento.',
+      body: criarLivroAutorBodySchema,
+      response: {
+        200: livroAutorResponseSchema
+      }
+    },
+    handler: async (req, res) => controller.create(req, res)
   });
 }

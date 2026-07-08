@@ -33,3 +33,12 @@ export const livroAutorIdParamSchema = {
   },
   required: ['id']
 };
+
+export const criarLivroAutorBodySchema = {
+  type: 'object',
+  properties: {
+    livro_id: { type: 'integer', description: 'Identificador do livro.' },
+    autor_id: { type: 'integer', description: 'Identificador do autor.' }
+  },
+  required: ['livro_id', 'autor_id']
+};
